@@ -1,5 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
+const projects = require("./data/projects.json");
+const articles = require("./data/articles.json");
 
 const app = express();
 
@@ -16,11 +18,11 @@ app.get("/blog", (request, response) => {
 });
 
 app.get("/api/projects", (request, response) => {
-  response.sendFile(__dirname + "/data/projects.json");
+  response.json(projects);
 });
 
 app.get("/api/articles", (request, response) => {
-  response.sendFile(__dirname + "/data/articles.json");
+  response.json(articles);
 });
 
 app.get("/*", (request, response) => {
